@@ -1,0 +1,22 @@
+{
+    "_meta": {
+        "hostvars": {
+            "host1": {
+                "fly_rod": true
+            }
+        }
+    },
+    "all": {
+        "children": [
+            "groupA",
+            "ungrouped"
+        ]
+    },
+    "groupA": {
+        "hosts": [
+            "host1",
+            "host2",
+            "host3"
+        ]
+    }
+}
