@@ -1,5 +1,5 @@
 ---
-all:
+ungrouped:
   hosts:
     ymlhost1:
     ymlhost2:
