@@ -1,17 +1,30 @@
 ---
-ungrouped:
-  hosts:
-    ymlhost1:
-    ymlhost2:
+all:
+  children:
+    webservers:
+      hosts:
+        web1.example.com:
+          http_port: 8080
+        web2.example.com:
+          http_port: 8081
+      vars:
+        ansible_user: webadmin
+        app_env: production
 
-webservers:
-  hosts:
-    foo.example.com:
-      ansible_user: NATH_USER
-    bar.example.com:
+    dbservers:
+      hosts:
+        db1.example.com:
+          db_role: primary
+        db2.example.com:
+          db_role: replica
+      vars:
+        ansible_user: dbadmin
+        backup_enabled: true
 
-dbservers:
-  hosts:
-    one.example.com:
-        ansible_ssh_port: 2222
-    two.example.com:
+    loadbalancers:
+      hosts:
+        lb1.example.com:
+          lb_type: haproxy
+      vars:
+        ansible_user: lbadmin
+        balance_method: roundrobin
